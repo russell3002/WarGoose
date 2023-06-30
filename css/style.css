@@ -1,0 +1,578 @@
+/*
+ 1. Задати стилі гравця.
+
+ 2. Задати стилі кулі.
+
+ 3. Задати стилі ворогів типу1.
+
+ 4. Задати стилі ворогів типу2.
+
+ 5. Задати стилі стартовому блоку.
+
+ 6. Задати стилі меню.
+
+ 7. Задати стилі блоку кінця гри.
+
+ 8. Задати стилі хмарам.
+
+ 9. Задати стилі бонусам. */
+
+body {
+    margin: 0;
+    height: 100%;
+    
+}
+
+html {
+    background: radial-gradient(ellipse, #b7d3f2 0%, #4999f3 100%);
+}
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+#app {
+    min-height: 100%;
+    position: relative;
+    z-index: 9999;
+    height: 100%;
+    width: 100%;
+    
+}
+
+/**==============
+ < Player style >
+ ===============*/
+ #player{
+    width: 150px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    bottom: 0px;
+    left: calc(50% - 75px);
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+}
+
+#player.skin1{
+    background-image: url(../img/white_goose.png);
+
+}
+
+#player.skin2{
+    background-image: url(../img/grey_goose.png);
+}
+
+#player.skin3{
+    background-image: url(../img/haky_goose.png);
+}
+
+
+/**==============
+ < Bullet style >
+ ===============*/
+ .bullet{
+    position: absolute;
+    width: 10px;
+    height: 25px;
+    background-image: url('../img/bullet.png');
+    background-size: cover;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+}
+
+/**=============
+ < Enemy style >
+ ==============*/
+
+.enemy{
+    width: 100px;
+    height: 150px;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    top: -150px;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+    background-repeat: no-repeat;
+}
+
+.enemy.skin1{
+    background-image: url(../img/enemy1.png);
+    width: 70px;
+    height: 150px;
+}
+
+.enemy.skin2{
+    background-image: url(../img/enemy2.png);
+    width: 70px;
+    height: 150px;
+}
+
+.enemy.skin3{
+    background-image: url(../img/enemy3.png);
+    width: 70px;
+    height: 150px;
+}
+
+.enemy.skin4{
+    background-image: url(../img/enemy4.png);
+    width: 110px;
+    height: 150px;
+}
+
+.enemy.boom{
+    background-image: url(../img/boom.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+
+/**=============
+ < Bpla style >
+ ==============*/
+.bpla{
+    width: 120px;
+    height: 80px;
+    background-size: cover;
+    position: absolute;
+    top: -150px;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+    transform: rotate(-45deg);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bpla.skin1{
+    background-image: url(../img/bpla1.png);
+    width: 100px;
+    height: 80px;
+}
+
+.bpla.skin2{
+    background-image: url(../img/bpla2.png);
+    width: 80px;
+    height: 60px;
+}
+
+.bpla.boom{
+    background-image: url(../img/boom.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/**===================
+ < Start-game title >
+ ====================*/
+
+ .start-game-title {
+    background-image:  url(../img/title_war_goose.png);
+    width: 800px;
+    height: 110px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 40px;
+    left: calc(50% - 400px);
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+  }
+
+/**===================
+ < Start block style >
+ ====================*/
+
+.start-block{
+    width: 100%;
+    display: flex;
+}
+
+.start-block .start-game {
+    width: 400px;
+    height: 300px;
+    background: #22e547a6;
+    border-radius: 10px;
+    box-shadow:  10px 5px 5px rgb(160, 144, 144);
+    padding: 20px;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(50% - 200px);
+    z-index: 9999;
+}
+
+.start-block .start-game h1 {
+  font-family: monospace;
+  text-align: center;
+  font-size: 28px;
+  color: #071439;
+}
+
+.start-block .start-game button {
+    align-items: center;
+    background-color: #f9fb04;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #09316f;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter,sans-serif;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 30px auto;
+    display: block;
+}
+
+.start-block .start-game button:after {
+    background-color: #111;
+    border-radius: 8px;
+    content: "";
+    display: block;
+    height: 48px;
+    left: 0;
+    width: 100%;
+    position: absolute;
+    top: -2px;
+    transform: translate(8px, 8px);
+    transition: transform .2s ease-out;
+    z-index: -1;
+}
+
+.start-block .start-game button:hover:after {
+transform: translate(0, 0);
+}
+
+.start-block .start-game button:active {
+background-color: #ffdeda;
+outline: 0;
+}
+
+.start-block .start-game button:hover {
+outline: 0;
+}
+.start-block .start-game .skins {
+  display: flex;
+}
+
+.start-block .start-game .select-skin {
+  width: 30%;
+  height: 120px;
+  margin: 5px;
+  border: 2px solid rgb(3 81 78 / 97%);
+  background-image:  url(../img/white_goose.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.start-block .start-game .select-skin.skin-1 {
+    background-image:  url(../img/white_goose.png);
+  }
+
+.start-block .start-game .select-skin.skin-2 {
+  background-image:  url(../img/grey_goose.png);
+}
+
+.start-block .start-game .select-skin.skin-3 {
+  background-image:  url(../img/haky_goose.png); 
+}
+
+.start-block .start-game .skins input {
+  display: none;
+}
+
+.start-block .start-game .skins input[type=radio]:checked + label {
+  border: 2px solid #f9fb04;
+}
+
+
+
+.start-block .main-goose{
+    width: 400px;
+    height: 400px;
+    background-image: url(../img/gus-main-page.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: calc(50% - 150px);
+    left: calc(100% - 450px);
+    z-index: 9999;
+}
+
+.start-block .greeting{
+    width: 350px;
+    height: 210px;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 30px;
+    margin-top: 50px;
+    top: calc(50% - 150px);
+    left: 50px;
+    position: absolute;
+    z-index: 9999;
+}
+
+.start-block .greeting h3{
+    font-size: 18px;
+    text-align: center;
+    color: #ffb71d;
+    font-family: italic, cursive;
+}
+
+
+
+/**=======
+ < Menu >
+=========*/
+
+.menu .audio .sound svg{
+    width: 50px;
+    height: 50px;
+}
+
+.menu .audio .sound{
+    cursor: pointer;
+}
+
+.menu .audio .music svg{
+    width: 40px;
+    height: 40px;
+    fill: #fbff00;
+}
+
+.menu .audio .music{
+    cursor: pointer;
+}
+
+.menu{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
+    z-index: 99999;
+}
+
+.menu .lifes {
+    display: flex;
+}
+
+.menu .lifes span{
+    background: url(../img/lifes.png);
+    width: 50px;
+    height: 50px;
+    display: block;
+    margin: 3px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 9999;
+}
+
+#score{
+    color: #fbff00;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-family: cursive;
+    text-transform: uppercase;
+}
+
+
+
+
+/*==============
+  < Game over >
+===============*/
+
+.end-game{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.end-game .game-over {
+    background-image:  url(../img/game_over.png);
+    width: 950px;
+    height: 110px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+}
+
+.end-game .end-title .end-gus {
+    background-image:  url(../img/end-gus.svg);
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+}
+
+.end-game .end-title{
+    display: flex;
+
+}
+
+.end-game .end-title .end-word{
+    width: 250px;
+    height: 210px;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 30px;
+    z-index: 9999;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+    
+.end-game .end-title .end-word h3{
+    font-size: 18px;
+    text-align: center;
+    color: #ffb71d;
+    font-family: italic, cursive;
+}
+
+.end-game .end-title .end-word span{
+    color: #fbff00;
+    font-size: 1.25em;
+    font-weight: bold;
+    font-family: cursive;
+    text-transform: uppercase;
+}
+
+
+
+.end-game .btnRestart {
+    align-items: center;
+    background-image: linear-gradient(144deg, #40ff77, #84f342 50%,#00DDEB);
+    border: 2px solid #111;
+    /* border: 0; */
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #1d5f05;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.end-game .btnRestart:active,
+.end-game .btnRestart:hover {
+  outline: 0;
+}
+
+.end-game .btnRestart:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+/**=========
+ < Clouds >
+==========*/
+.cloud{
+    position: absolute;
+    top: -200px;
+    transition: all 0.5s ease-out;
+    z-index: 1;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+}
+
+.cloud.skin-1{
+    top: -350px;
+    width: 800px;
+    height: 350px;
+    background: url(../img/cloud1.png);
+}
+
+.cloud.skin-2{
+    width: 200px;
+    height: 100px;
+    background: url(../img/cloud2.png);
+}
+
+.cloud.skin-3{
+    width: 400px;
+    height: 200px;
+    background: url(../img/cloud3.png);
+}
+
+.cloud.skin-4{
+    width: 300px;
+    height: 150px;
+    background: url(../img/cloud4.png);
+}
+
+/*=====================
+  < Bonus life style >
+=====================*/
+.bonusLife{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: url(../img/cherry.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -100px;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+    left: 1200px;
+}
+/*=========================
+  < Bonus all kills style >
+==========================*/
+.tnt{
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    background: url(../img/watermelon.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: -100px;
+    transition: all 0.3s ease-out;
+    z-index: 9999;
+    left: 1000px;
+}
+
+
+/**=========
+ < Helpers >
+ ==========*/
+
+ .hidden{
+    display: none;
+ }
